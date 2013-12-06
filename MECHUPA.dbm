@@ -7,13 +7,16 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <schema name="public" protected="true" fill-color="#e1e1e1" sql-disabled="true">
 </schema>
 
+<schema name="jogosps3" rect-visible="true" fill-color="#e1e1e1">
+</schema>
+
 <database name="tp01_2013_01">
 </database>
 
 <table name="PS3_Game">
-	<schema name="public"/>
+	<schema name="jogosps3"/>
 	<comment><![CDATA[Tabela do Produto: PS3]]></comment>
-	<position x="244" y="119"/>
+	<position x="55" y="288"/>
 	<column name="id" not-null="true">
 		<type name="smallint"/>
 	</column>
@@ -30,7 +33,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 		<type name="real"/>
 	</column>
 	<column name="map_price">
-		<type name="smallint"/>
+		<type name="smallint" length="10"/>
 	</column>
 	<column name="gameSex">
 		<type name="smallint"/>
@@ -44,81 +47,198 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<column name="id_shop">
 		<type name="smallint"/>
 	</column>
-	<constraint name="pk_product_id" type="pk-constr" factor="10" table="public.&quot;PS3_Game&quot;">
+	<constraint name="pk_product_id" type="pk-constr" factor="10" table="jogosps3.&quot;PS3_Game&quot;">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+	<constraint name="ck_product_create" type="ck-constr" table="jogosps3.&quot;PS3_Game&quot;">
+			<expression><![CDATA[gen EXISTS IN (SELECT code FROM feature WHERE type='gen') and map_price EXISTS IN (SELECT code FROM feature WHERE type='map_price') and newest EXISTS IN (SELECT code FROM feature WHERE type='newest')]]></expression>
+	</constraint>
+</table>
+
+<table name="fornecedor">
+	<schema name="public"/>
+	<position x="600" y="400"/>
+	<column name="idFornecedor" not-null="true">
+		<type name="serial"/>
+	</column>
+	<column name="nome" not-null="true">
+		<type name="varchar" length="45"/>
+	</column>
+	<constraint name="pk_provider_id" type="pk-constr" factor="10" table="public.fornecedor">
+		<columns names="idFornecedor" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="fabricante">
+	<schema name="public"/>
+	<position x="600" y="300"/>
+	<column name="idFabricante" not-null="true">
+		<type name="serial"/>
+	</column>
+	<column name="nome">
+		<type name="varchar" length="45"/>
+	</column>
+	<column name="nacionalidade">
+		<type name="varchar" length="45"/>
+	</column>
+	<constraint name="pk_id_manufacturer" type="pk-constr" factor="10" table="public.fabricante">
+		<columns names="idFabricante" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="loja">
+	<schema name="public"/>
+	<position x="600" y="500"/>
+	<column name="idLoja" not-null="true">
+		<type name="serial"/>
+	</column>
+	<column name="nome">
+		<type name="varchar" length="50"/>
+	</column>
+	<column name="fisico">
+		<type name="smallint"/>
+	</column>
+	<column name="endereco">
+		<type name="varchar" length="255"/>
+	</column>
+	<constraint name="pk_id_shop" type="pk-constr" factor="10" table="public.loja">
+		<columns names="idLoja" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="feature">
+	<schema name="jogosps3"/>
+	<position x="58" y="188"/>
+	<column name="type">
+		<type name="varchar" length="50"/>
+	</column>
+	<column name="code">
+		<type name="smallint"/>
+	</column>
+	<column name="value">
+		<type name="varchar" length="50"/>
+	</column>
+</table>
+
+<table name="profile">
+	<schema name="jogosps3"/>
+	<position x="172" y="190"/>
+	<column name="id" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="CPF">
+		<type name="varchar" length="11"/>
+	</column>
+	<column name="features">
+		<type name="varchar" length="4"/>
+	</column>
+	<constraint name="pk_profile_id" type="pk-constr" factor="10" table="jogosps3.profile">
 		<columns names="id" ref-type="src-columns"/>
 	</constraint>
 </table>
 
-<table name="provider">
+<table name="usuario">
 	<schema name="public"/>
-	<position x="257" y="373"/>
-	<column name="id_provider">
-		<type name="smallint"/>
+	<position x="600" y="20"/>
+	<column name="idUsuario" not-null="true">
+		<type name="serial"/>
 	</column>
-	<column name="name">
-		<type name="varchar" length="50"/>
+	<column name="nome" not-null="true">
+		<type name="varchar" length="15"/>
 	</column>
-	<constraint name="pk_provider_id" type="pk-constr" factor="10" table="public.provider">
-		<columns names="id_provider" ref-type="src-columns"/>
+	<column name="sobrenome" not-null="true">
+		<type name="varchar" length="15"/>
+	</column>
+	<column name="CPF" not-null="true">
+		<type name="varchar" length="15"/>
+	</column>
+	<column name="email" not-null="true">
+		<type name="varchar" length="64"/>
+	</column>
+	<column name="senha">
+		<type name="varchar" length="45"/>
+	</column>
+	<column name="sex">
+		<type name="char"/>
+	</column>
+	<column name="apelido">
+		<type name="varchar" length="15"/>
+	</column>
+	<constraint name="pk_user_id" type="pk-constr" factor="10" table="public.usuario">
+		<columns names="idUsuario" ref-type="src-columns"/>
+	</constraint>
+	<constraint name="un_user_email" type="uq-constr" factor="10" table="public.usuario">
+		<columns names="email,CPF" ref-type="src-columns"/>
 	</constraint>
 </table>
 
-<table name="manufacturer">
+<table name="friendship">
 	<schema name="public"/>
-	<position x="632" y="166"/>
-	<column name="id_manufacturer">
+	<position x="600" y="200"/>
+	<column name="idAmizade">
 		<type name="smallint"/>
 	</column>
-	<column name="name">
+	<column name="usuario_idUsuario">
+		<type name="integer" length="50"/>
+	</column>
+	<column name="usuario_idAmigo">
+		<type name="integer" length="50"/>
+	</column>
+	<column name="grau">
 		<type name="smallint"/>
 	</column>
-	<constraint name="pk_id_manufacturer" type="pk-constr" factor="10" table="public.manufacturer">
-		<columns names="id_manufacturer" ref-type="src-columns"/>
-	</constraint>
-</table>
-
-<table name="shop">
-	<schema name="public"/>
-	<position x="22" y="360"/>
-	<column name="id_shop">
-		<type name="smallint"/>
-	</column>
-	<column name="name">
-		<type name="varchar" length="50"/>
-	</column>
-	<constraint name="pk_id_shop" type="pk-constr" factor="10" table="public.shop">
-		<columns names="id_shop" ref-type="src-columns"/>
+	<constraint name="pk_friendship_id" type="pk-constr" factor="10" table="public.friendship">
+		<columns names="idAmizade" ref-type="src-columns"/>
 	</constraint>
 </table>
 
 <constraint name="fk_provider_id" type="fk-constr"	 comparison-type="MATCH FULL"
-	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.provider" table="public.&quot;PS3_Game&quot;">
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.fornecedor" table="jogosps3.&quot;PS3_Game&quot;">
 	<columns names="id_provider" ref-type="src-columns"/>
-	<columns names="id_provider" ref-type="dst-columns"/>
+	<columns names="idFornecedor" ref-type="dst-columns"/>
 </constraint>
 <constraint name="fk_shop_id" type="fk-constr"	 comparison-type="MATCH FULL"
-	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.shop" table="public.&quot;PS3_Game&quot;">
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.loja" table="jogosps3.&quot;PS3_Game&quot;">
 	<columns names="id_shop" ref-type="src-columns"/>
-	<columns names="id_shop" ref-type="dst-columns"/>
+	<columns names="idLoja" ref-type="dst-columns"/>
 </constraint>
 <constraint name="fk_manufacturer_id" type="fk-constr"	 comparison-type="MATCH FULL"
-	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.manufacturer" table="public.&quot;PS3_Game&quot;">
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.fabricante" table="jogosps3.&quot;PS3_Game&quot;">
 	<columns names="id_manufacturer" ref-type="src-columns"/>
-	<columns names="id_manufacturer" ref-type="dst-columns"/>
+	<columns names="idFabricante" ref-type="dst-columns"/>
+</constraint>
+<constraint name="fk_user_CPF" type="fk-constr"	 comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.usuario" table="jogosps3.profile">
+	<columns names="CPF" ref-type="src-columns"/>
+	<columns names="CPF" ref-type="dst-columns"/>
+</constraint>
+<constraint name="fk_friendship_id" type="fk-constr"	 comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.usuario" table="public.friendship">
+	<columns names="usuario_idUsuario,usuario_idAmigo" ref-type="src-columns"/>
 </constraint>
 <relationship name="&quot;rel_PS3_Game_provider&quot;" type="relfk"
-	 src-table="public.&quot;PS3_Game&quot;"
-	 dst-table="public.provider"
+	 src-table="jogosps3.&quot;PS3_Game&quot;"
+	 dst-table="public.fornecedor"
 	 src-required="true" dst-required="true"/>
 
 <relationship name="&quot;rel_PS3_Game_shop&quot;" type="relfk"
-	 src-table="public.&quot;PS3_Game&quot;"
-	 dst-table="public.shop"
+	 src-table="jogosps3.&quot;PS3_Game&quot;"
+	 dst-table="public.loja"
 	 src-required="true" dst-required="true"/>
 
 <relationship name="&quot;rel_PS3_Game_manufacturer&quot;" type="relfk"
-	 src-table="public.&quot;PS3_Game&quot;"
-	 dst-table="public.manufacturer"
+	 src-table="jogosps3.&quot;PS3_Game&quot;"
+	 dst-table="public.fabricante"
+	 src-required="true" dst-required="true"/>
+
+<relationship name="rel_profile_user" type="relfk"
+	 src-table="jogosps3.profile"
+	 dst-table="public.usuario"
+	 src-required="true" dst-required="true"/>
+
+<relationship name="rel_friendship_user" type="relfk"
+	 src-table="public.friendship"
+	 dst-table="public.usuario"
 	 src-required="true" dst-required="true"/>
 
 </dbmodel>
