@@ -15,9 +15,16 @@ CAUTION: Do not modify this file unless you know what you are doing.
 
 <table name="fornecedor">
 	<schema name="public"/>
+	<appended-sql><![CDATA[INSERT INTO public.fornecedor (nome) VALUES ('Entrega Rápido Manaus');
+INSERT INTO public.fornecedor (nome) VALUES ('VapitVupit');
+INSERT INTO public.fornecedor (nome) VALUES ('Zapeando');
+INSERT INTO public.fornecedor (nome) VALUES ('FatiôEntregô');
+INSERT INTO public.fornecedor (nome) VALUES ('PiscôChegô');
+INSERT INTO public.fornecedor (nome) VALUES ('ManausEntregaFast');
+INSERT INTO public.fornecedor (nome) VALUES ('Fast and Furious');]]></appended-sql>
 	<position x="604" y="542"/>
 	<column name="idFornecedor" not-null="true">
-		<type name="smallint"/>
+		<type name="serial"/>
 	</column>
 	<column name="nome" not-null="true">
 		<type name="varchar" length="45"/>
@@ -29,9 +36,15 @@ CAUTION: Do not modify this file unless you know what you are doing.
 
 <table name="fabricante">
 	<schema name="public"/>
+	<appended-sql><![CDATA[INSERT INTO public.fabricante (nome,nacionalidade) VALUES ('EA Games','Internacional');
+INSERT INTO public.fabricante (nome,nacionalidade) VALUES ('RockStar Games','Internacional');
+INSERT INTO public.fabricante (nome,nacionalidade) VALUES ('Activision','Internacional');
+INSERT INTO public.fabricante (nome,nacionalidade) VALUES ('Ubisoft','Internacional');
+INSERT INTO public.fabricante (nome,nacionalidade) VALUES ('2k','Internacional');
+INSERT INTO public.fabricante (nome,nacionalidade) VALUES ('Insomniac','Internacional');]]></appended-sql>
 	<position x="598" y="468"/>
 	<column name="idFabricante">
-		<type name="smallint"/>
+		<type name="serial"/>
 	</column>
 	<column name="nome">
 		<type name="varchar" length="45"/>
@@ -46,9 +59,15 @@ CAUTION: Do not modify this file unless you know what you are doing.
 
 <table name="loja">
 	<schema name="public"/>
+	<appended-sql><![CDATA[INSERT INTO public.loja (nome,fisico,endereco) VALUES ('Saraiva',0,'www.livrariasaraiva.com.br');
+INSERT INTO public.loja (nome,fisico,endereco) VALUES ('InfoStore',1,'Av. Djalma Batista 482 Parque Dez');
+INSERT INTO public.loja (nome,fisico,endereco) VALUES ('True-Data',0,'www.truedata.com.br/loja');
+INSERT INTO public.loja (nome,fisico,endereco) VALUES ('Mirai Panasonic',0,'www.mirai.com.br');
+INSERT INTO public.loja (nome,fisico,endereco) VALUES ('Only-Midia',0,'www.onlymidia.com.br');
+INSERT INTO public.loja (nome,fisico,endereco) VALUES ('Pro-Gamerz',0,'www.progamerz.gr');]]></appended-sql>
 	<position x="599" y="389"/>
 	<column name="idLoja" not-null="true">
-		<type name="smallint"/>
+		<type name="serial"/>
 	</column>
 	<column name="nome">
 		<type name="varchar" length="45"/>
@@ -66,7 +85,35 @@ CAUTION: Do not modify this file unless you know what you are doing.
 
 <table name="features">
 	<schema name="jogosps3"/>
-	<position x="134" y="154"/>
+	<appended-sql><![CDATA[INSERT INTO jogosps3.features (type, code, value) VALUES ('gen',1,'Ação');
+INSERT INTO jogosps3.features (type, code, value) VALUES ('gen',2,'Arcade');
+INSERT INTO jogosps3.features (type, code, value) VALUES ('gen',3,'Aventura');
+INSERT INTO jogosps3.features (type, code, value) VALUES ('gen',4,'Esporte');
+INSERT INTO jogosps3.features (type, code, value) VALUES ('gen',5,'Estratégia');
+INSERT INTO jogosps3.features (type, code, value) VALUES ('gen',6,'Hack n Slash');
+INSERT INTO jogosps3.features (type, code, value) VALUES ('gen',7,'Musical');
+INSERT INTO jogosps3.features (type, code, value) VALUES ('gen',8,'Nave');
+INSERT INTO jogosps3.features (type, code, value) VALUES ('gen',9,'Plataforma');
+INSERT INTO jogosps3.features (type, code, value) VALUES ('gen',10,'Puzzle');
+INSERT INTO jogosps3.features (type, code, value) VALUES ('gen',11,'RPG');
+INSERT INTO jogosps3.features (type, code, value) VALUES ('gen',12,'Terror');
+INSERT INTO jogosps3.features (type, code, value) VALUES ('gen',13,'Tiro');
+INSERT INTO jogosps3.features (type, code, value) VALUES ('map_price',1,'0-30');
+INSERT INTO jogosps3.features (type, code, value) VALUES ('map_price',2,'30-50');
+INSERT INTO jogosps3.features (type, code, value) VALUES ('map_price',3,'50-90');
+INSERT INTO jogosps3.features (type, code, value) VALUES ('map_price',4,'90-100');
+INSERT INTO jogosps3.features (type, code, value) VALUES ('map_price',5,'100-120');
+INSERT INTO jogosps3.features (type, code, value) VALUES ('map_price',6,'120-150');
+INSERT INTO jogosps3.features (type, code, value) VALUES ('map_price',7,'150-170');
+INSERT INTO jogosps3.features (type, code, value) VALUES ('map_price',8,'170-190');
+INSERT INTO jogosps3.features (type, code, value) VALUES ('map_price',9,'200-210');
+INSERT INTO jogosps3.features (type, code, value) VALUES ('map_price',10,'220-270');
+INSERT INTO jogosps3.features (type, code, value) VALUES ('gameSex',1,'M');
+INSERT INTO jogosps3.features (type, code, value) VALUES ('gameSex',2,'F');
+INSERT INTO jogosps3.features (type, code, value) VALUES ('gameSex',3,'U');
+INSERT INTO jogosps3.features (type, code, value) VALUES ('newest',1,'Lançamento');
+INSERT INTO jogosps3.features (type, code, value) VALUES ('newest',2,'Antigo');]]></appended-sql>
+	<position x="97" y="157"/>
 	<column name="type" not-null="true">
 		<type name="varchar" length="45"/>
 	</column>
@@ -80,6 +127,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 
 <table name="profile">
 	<schema name="jogosps3"/>
+	<appended-sql><![CDATA[INSERT INTO jogosps3.profile ("idUsuario",gen,map_price,"gameSex",newest,describe) VALUES (1,1,1,2,3,'Tretas');]]></appended-sql>
 	<position x="96" y="47"/>
 	<column name="id_profile" not-null="true">
 		<type name="serial" length="45"/>
@@ -87,7 +135,19 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<column name="idUsuario">
 		<type name="integer"/>
 	</column>
-	<column name="features">
+	<column name="gen">
+		<type name="smallint"/>
+	</column>
+	<column name="map_price">
+		<type name="smallint"/>
+	</column>
+	<column name="gameSex">
+		<type name="smallint"/>
+	</column>
+	<column name="newest">
+		<type name="smallint"/>
+	</column>
+	<column name="describe">
 		<type name="varchar" length="45"/>
 	</column>
 	<constraint name="pk_profile_id" type="pk-constr" factor="100" table="jogosps3.profile">
@@ -97,7 +157,9 @@ CAUTION: Do not modify this file unless you know what you are doing.
 
 <table name="usuario">
 	<schema name="public"/>
-	<position x="600" y="25"/>
+	<appended-sql><![CDATA[INSERT INTO public.usuario (nome,sobrenome,"CPF",email,senha,apelido) VALUES ('Yan','Brandão','013.652.012-01','yBrandao.D@gmail.com','!@#$%','Yn~');
+INSERT INTO public.usuario (nome,sobrenome,"CPF",email,senha,apelido) VALUES ('Elvis','Guto','012.651.123-02','paraelvisguto@gmail.com','paraelvisguto','RiscaFaca');]]></appended-sql>
+	<position x="608" y="46"/>
 	<column name="idUsuario" not-null="true">
 		<type name="serial"/>
 	</column>
@@ -129,6 +191,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 
 <table name="amizade">
 	<schema name="public"/>
+	<appended-sql><![CDATA[INSERT INTO public.amizade ("usuario_idUsuario","usuario_idAmigo",grau) VALUES ('1','2','10');]]></appended-sql>
 	<position x="598" y="237"/>
 	<column name="idAmizade" not-null="true">
 		<type name="serial"/>
@@ -150,12 +213,186 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="jogosps3">
 	<schema name="jogosps3"/>
 	<comment><![CDATA[Tabela do Produto: PS3]]></comment>
+	<appended-sql><![CDATA[INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('.detuned ',1,7,' R$159,00 ',7,1,1,1,1);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('.hack//Versus [JAP] Luta ',0,2,' R$159,00 ',7,2,2,2,2);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('007 Legends ',0,1,' R$159,00 ',7,3,3,2,2);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('100 Yen Trash Can [JAP] ',0,10,' R$159,00 ',7,1,4,3,3);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('2010 FIFA World Cup  ',0,4,' R$159,00 ',7,1,5,4,4);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('3 on 3 NHL  ',0,2,' R$159,00 ',7,1,6,5,5);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('3D Dot Game Heroes  ',0,11,' R$159,00 ',7,1,7,5,5);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('3D Dot Game Heroes [EUR]  ',0,11,' R$159,00 ',7,1,1,5,5);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('3D Dot Game Heroes [JAP]  ',0,11,' R$159,00 ',7,2,2,5,5);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('3D Ultra MiniGolf Adventures 2  ',0,4,' R$159,00 ',7,2,2,6,6);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('4 Elements HD  ',0,10,' R$159,00 ',7,2,3,6,6);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('428 ~In a Blockaded Shibuya~ [JAP] ',1,3,' R$159,00 ',7,2,3,6,6);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('50 Cent: Blood On The Sand [JAP] ',1,13,' R$159,00 ',7,2,2,2,2);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('A-Men ',0,1,' R$159,00 ',7,3,2,2,2);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Absolute SupercarsCorrida Simul ',0,1,' R$159,00 ',7,3,1,2,2);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Accel World: Awakening of the Silver Wings [JAP] ',0,3,' R$159,00 ',7,3,1,3,3);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Accel World: The Peak of Acceleration [JAP] ',0,3,' R$105,00 ',5,3,4,3,3);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Acceleration of Suguri X-EditionLuta  ',0,2,' R$105,00 ',5,3,5,4,4);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Aero-Cross ',0,1,' R$105,00 ',5,1,6,4,4);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('AFL Live ',0,4,' R$105,00 ',5,1,4,5,5);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('AFL Live 2 ',0,4,' R$105,00 ',5,1,4,5,5);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Afrika ',0,3,' R$105,00 ',5,1,4,5,5);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Age of Booty ',0,5,' R$105,00 ',5,2,5,2,2);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('AKB 1/149: Love Election [JAP] ',1,3,' R$105,00 ',5,2,5,2,2);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Akimi Village ',1,5,' R$105,00 ',5,2,6,1,1);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Alex Kidd in Miracle WorldClássicos ',0,9,' R$105,00 ',5,3,7,1,1);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Alice: Madness Returns ',0,9,' R$105,00 ',5,3,7,1,1);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Alice: Madness Returns [JAP] ',0,9,' R$105,00 ',5,3,7,1,1);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Alien Breed ',0,13,' R$105,00 ',5,1,7,1,1);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Alien Breed 2: Assault ',0,13,' R$85,00 ',3,2,6,1,1);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Alien Breed 3: Descent ',0,13,' R$85,00 ',3,1,6,4,4);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Alien Breed: Impact ',0,13,' R$85,00 ',3,1,6,2,2);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Alien Zombie Megadeath ',0,1,' R$85,00 ',3,2,5,2,2);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Aliens vs. Predator ',0,13,' R$85,00 ',3,2,5,2,2);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Aliens: Colonial Marines ',0,13,' R$85,00 ',3,3,5,3,3);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('All Zombies Must Die! ',1,1,' R$85,00 ',3,3,5,3,3);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Alone in the Dark: Inferno ',1,12,' R$85,00 ',3,3,4,5,5);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Alpha Protocol ',0,11,' R$85,00 ',3,3,4,5,5);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('American Mensa Academy ',0,10,' R$85,00 ',3,1,4,5,5);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Amy ',0,12,' R$85,00 ',3,1,3,6,6);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Anarchy Reigns ',0,1,' R$85,00 ',3,1,3,6,6);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Anarchy Reigns [JAP] ',0,1,' R$85,00 ',3,1,2,6,6);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Anarchy: Rush HourCorrida  ',0,2,' R$85,00 ',3,3,2,6,6);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Angry Birds Star Wars ',0,10,' R$92,00 ',5,3,2,6,6);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Angry Birds Trilogy ',0,1,' R$92,00 ',5,3,1,6,6);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Anomaly: Warzone Earth ',0,5,' R$92,00 ',5,2,1,4,4);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Another Centurys Episode R [JAP] ',0,1,' R$92,00 ',5,2,3,4,4);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Aquanauts Holiday: Hidden Memories [JAP] ',1,3,' R$92,00 ',5,1,3,4,4);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('AquaPanic! ',1,10,' R$92,00 ',5,2,3,3,3);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('AquaPazza: AquaPlus Dream Match [JAP]Luta  ',0,2,' R$92,00 ',5,3,4,3,3);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Ar tonelico Qoga: Knell of Ar Ciel ',0,11,' R$92,00 ',5,1,5,3,3);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Ar tonelico Qoga: Knell of Ar Ciel [JAP] ',0,11,' R$92,00 ',5,1,6,2,2);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Arcana Heart 3Luta  ',0,2,' R$79,00 ',3,1,6,2,2);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Arkedo Series ',0,9,' R$79,00 ',3,1,5,1,1);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Arkedo Series - 01 Jump! ',0,9,' R$79,00 ',3,2,1,1,1);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Arkedo Series - 02 Swap! ',0,9,' R$79,00 ',3,2,2,1,1);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Arkedo Series – 03 Pixel! ',0,9,' R$79,00 ',3,2,3,3,3);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Armageddon RidersCorrida  ',0,2,' R$79,00 ',3,2,4,3,3);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Armored Core V ',1,1,' R$79,00 ',3,2,5,3,3);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Armored Core V [EUR] ',1,1,' R$79,00 ',3,3,6,4,4);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Armored Core V [JAP] ',0,1,' R$79,00 ',3,3,7,4,4);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Armored Core V [KOR] ',0,1,' R$79,00 ',3,3,1,1,1);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Armored Core: Verdict Day ',0,1,' R$79,00 ',3,3,2,2,2);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Army of Two: The 40th Day ',0,13,' R$79,00 ',3,3,2,2,2);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Army of Two: The 40th Day [JAP] ',0,13,' R$79,00 ',3,1,3,3,3);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Army of Two: The Devils Cartel ',0,13,' R$79,00 ',3,1,3,4,4);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Ashes Cricket 2009 ',0,4,' R$79,00 ',3,1,2,5,5);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Assassins Creed II ',0,1,' R$79,00 ',3,1,2,5,5);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Assassins Creed III ',0,1,' R$29,00 ',1,2,1,5,5);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Assassins Creed IV: Black Flag ',0,1,' R$29,00 ',1,2,1,5,5);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Assassins Creed: Brotherhood ',1,1,' R$29,00 ',1,2,4,6,6);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Assassins Creed: Revelations ',1,1,' R$29,00 ',1,3,5,6,6);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Assault Heroes ',0,13,' R$29,00 ',1,3,6,6,6);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Astro Tripper ',0,8,' R$29,00 ',1,3,4,2,2);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Asuras Wrath ',0,1,' R$29,00 ',1,1,4,2,2);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Atelier Ayesha: The Alchemist of Dusk ',0,11,' R$29,00 ',1,2,4,2,2);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Atelier Escha and Logy: The Alchemists of Dusk Sky [JAP] ',0,11,' R$29,00 ',1,1,5,3,3);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Atelier Meruru: The Apprentice of Arland ',0,11,' R$29,00 ',1,1,5,3,3);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Atelier Meruru: The Apprentice of Arland [JAP] ',0,11,' R$29,00 ',1,2,6,4,4);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Atelier Rorona: The Alchemist of Arland ',0,11,' R$29,00 ',1,2,7,4,4);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Atelier Rorona: The Alchemist of Arland [JAP] ',0,11,' R$29,00 ',1,3,7,5,5);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Atelier Totori: The Adventurer of Arland ',0,11,' R$29,00 ',1,3,7,5,5);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Atelier Totori: The Adventurer of Arland [JAP] ',1,11,' R$29,00 ',1,3,7,5,5);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Auditorium HD ',1,7,' R$29,00 ',1,3,6,2,2);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Awesomenauts ',0,1,' R$29,00 ',1,1,6,2,2);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Babel Rising ',0,5,' R$29,00 ',1,1,6,1,1);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Back to the Future - Episode 1: Its About Time ',0,3,' R$29,00 ',1,1,5,1,1);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Back to the Future - Episode 2: Get Tannen ',0,3,' R$29,00 ',1,1,5,1,1);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Back to the Future - Episode 3: Citizen Brown ',0,3,' R$29,00 ',1,3,5,1,1);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Back to the Future - Episode 4: Double Visions ',0,3,' R$78,00 ',3,3,5,1,1);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Back to the Future - Episode 5: OUTATIME ',0,3,' R$78,00 ',3,3,4,1,1);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Back to the Future: The Game ',0,3,' R$78,00 ',3,2,4,4,4);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Backbreaker ',0,4,' R$78,00 ',3,2,4,2,2);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Backbreaker Vengeance ',0,4,' R$78,00 ',3,1,3,2,2);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Bakugan Battle Brawlers ',1,11,' R$78,00 ',3,2,3,2,2);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Bakugan: Defenders of the Core ',1,1,' R$78,00 ',3,3,2,3,3);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Band Hero ',0,7,' R$78,00 ',3,1,2,3,3);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Bang Bang RacingCorrida  ',0,2,' R$78,00 ',3,1,1,5,5);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Batman: Arkham Asylum ',0,1,' R$78,00 ',3,1,1,5,5);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Batman: Arkham Asylum [JAP] ',0,1,' R$78,00 ',3,1,3,6,6);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Batman: Arkham City ',0,1,' R$78,00 ',3,2,3,6,6);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Batman: Arkham Origins ',0,1,' R$78,00 ',3,2,3,6,6);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Battle FantasiaLuta  ',0,2,' R$78,00 ',3,2,4,6,6);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Battle: Los Angeles ',0,13,' R$78,00 ',3,2,5,6,6);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Battlefield 1943 ',0,13,' R$78,00 ',3,2,6,6,6);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Battlefield 3 ',1,13,' R$78,00 ',3,3,5,4,4);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Battlefield 4 ',1,13,' R$78,00 ',3,3,6,4,4);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Battlefield: Bad Company ',0,13,' R$78,00 ',3,3,5,4,4);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Battlefield: Bad Company 2 ',0,13,' R$78,00 ',3,3,1,3,3);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Battleship ',0,13,' R$78,00 ',3,3,2,3,3);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Bayonetta ',0,6,' R$78,00 ',3,1,3,3,3);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Beat Hazard Ultra ',0,13,' R$78,00 ',3,1,4,2,2);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Beat Sketcher ',0,7,' R$49,00 ',2,1,5,2,2);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Bejeweled 2 ',0,10,' R$49,00 ',2,1,6,2,2);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Bejeweled 3 ',0,10,' R$49,00 ',2,2,7,1,1);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Bellator: MMA Onslaught ',0,4,' R$49,00 ',2,2,1,1,1);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Ben 10 Ultimate Alien: Cosmic Destruction ',0,1,' R$49,00 ',2,2,2,1,1);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Ben 10: Galactic RacingCorrida  ',1,2,' R$49,00 ',2,3,2,3,3);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Ben 10: Omniverse ',1,1,' R$49,00 ',2,3,3,3,3);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Beyond Good & Evil HD ',0,1,' R$49,00 ',2,3,3,3,3);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Beyond the Future: Fix the Time Arrows [JAP] ',0,3,' R$49,00 ',2,1,2,4,4);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Beyond: Two Souls ',0,3,' R$49,00 ',2,2,2,4,4);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Big Sky Infinity ',0,13,' R$49,00 ',2,1,1,1,1);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Binary Domain ',0,13,' R$49,00 ',2,1,1,2,2);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Bionic Commando ',0,1,' R$49,00 ',2,2,4,2,2);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Bionic Commando Rearmed ',0,1,' R$49,00 ',2,2,5,3,3);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Bionic Commando Rearmed 2 ',0,1,' R$49,00 ',2,3,6,4,4);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('BioShock ',0,13,' R$49,00 ',2,3,4,5,5);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('BioShock 2 ',0,13,' R$49,00 ',2,3,4,5,5);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('BioShock Infinite ',1,13,' R$49,00 ',2,3,4,5,5);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('BioShock [JAP] ',1,13,' R$49,00 ',2,1,5,5,5);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Bit.Trip Presents Runner 2: Future Legend of Rhythm Alien ',0,9,' R$72,00 ',3,1,5,6,6);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Black Knight Sword ',0,10,' R$72,00 ',3,1,6,6,6);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Blacklight: Tango Down ',0,13,' R$72,00 ',3,1,7,6,6);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Blade Kitten ',0,1,' R$72,00 ',3,3,7,2,2);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Blades of Time ',0,1,' R$72,00 ',3,3,7,2,2);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Blast Factor ',0,8,' R$72,00 ',3,3,7,2,2);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('BlazBlue: Calamity TriggerLuta  ',0,2,' R$72,00 ',3,2,6,3,3);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('BlazBlue: Continuum ShiftLuta  ',0,2,' R$72,00 ',3,2,6,3,3);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('BlazBlue: Continuum Shift ExtendLuta  ',0,2,' R$72,00 ',3,1,6,4,4);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Bleach: Soul Resurrección ',0,6,' R$72,00 ',3,2,5,4,4);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Blitz: The League II ',1,4,' R$72,00 ',3,3,5,5,5);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Blokus ',1,10,' R$72,00 ',3,1,5,5,5);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Blood DriveCorrida  ',0,2,' R$72,00 ',3,1,5,5,5);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Blood Knights ',0,1,' R$72,00 ',3,1,4,2,2);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('BloodRayne: Betrayal ',0,1,' R$72,00 ',3,1,4,2,2);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Blue Toad Murder Files: The Mysteries of Little Riddle ',0,10,' R$72,00 ',3,1,4,1,1);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('BlurCorrida  ',0,2,' R$72,00 ',3,2,3,1,1);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Bodycount ',0,13,' R$72,00 ',3,2,3,1,1);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Bomberman Ultra ',0,10,' R$72,00 ',3,2,2,1,1);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Borderlands ',0,11,' R$250,00 ',10,2,2,1,1);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Borderlands 2 ',0,11,' R$200,00 ',9,2,2,1,1);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Borderlands: Game of the Year Edition ',0,11,' R$190,00 ',8,3,1,4,4);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Braid ',1,10,' R$63,00 ',3,3,1,2,2);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Brain Challenge ',1,10,' R$63,00 ',3,3,3,2,2);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Brink ',0,13,' R$63,00 ',3,3,3,2,2);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Brink [JAP] ',0,13,' R$63,00 ',3,3,3,3,3);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Brunswick Pro Bowling ',0,4,' R$63,00 ',3,1,4,3,3);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Brunswick Pro Bowling [EUR] ',0,4,' R$63,00 ',3,1,5,5,5);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Brütal Legend ',0,6,' R$63,00 ',3,1,6,5,5);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Bulletstorm ',0,13,' R$63,00 ',3,1,5,5,5);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('BurgerTime World Tour ',0,9,' R$63,00 ',3,2,6,6,6);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Burn Zombie Burn! ',0,1,' R$63,00 ',3,2,5,6,6);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Burnout Crash!Corrida  ',0,2,' R$63,00 ',3,2,1,6,6);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Burnout ParadiseCorrida  ',0,2,' R$63,00 ',3,3,2,6,6);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Buzz! Junior: Dino Den ',1,10,' R$63,00 ',3,3,3,6,6);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Buzz! Junior: Monsters ',1,10,' R$63,00 ',3,3,4,6,6);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Buzz! Junior: Robo Jam ',0,10,' R$192,00 ',9,1,5,4,4);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Buzz!: Brain of... ',0,10,' R$192,00 ',9,2,6,4,4);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Buzz!: Quiz TV ',0,10,' R$192,00 ',9,1,7,4,4);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Buzz!: Quiz World ',0,10,' R$192,00 ',9,1,1,3,3);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Buzz!: The Ultimate Music Quiz ',0,10,' R$192,00 ',9,2,2,3,3);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Cabelas Adventure Camp ',0,13,' R$192,00 ',9,2,7,2,2);
+INSERT INTO jogosps3.jogosps3 (name,newest,gen,price,map_price,"gameSex","idFornecedor","idFabricante","idLoja") VALUES ('Cabelas African Adventures ',1,13,' R$192,00 ',9,2,7,3,3);]]></appended-sql>
 	<position x="97" y="445"/>
 	<column name="id_jogosps3" not-null="true">
 		<type name="serial"/>
 	</column>
 	<column name="name">
-		<type name="varchar" length="50"/>
+		<type name="varchar" length="150"/>
 	</column>
 	<column name="newest">
 		<type name="smallint" length="50"/>
@@ -164,7 +401,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 		<type name="smallint" length="50"/>
 	</column>
 	<column name="price">
-		<type name="real"/>
+		<type name="varchar" length="20"/>
 	</column>
 	<column name="map_price">
 		<type name="smallint"/>
@@ -188,7 +425,8 @@ CAUTION: Do not modify this file unless you know what you are doing.
 
 <table name="recommendation">
 	<schema name="jogosps3"/>
-	<position x="107" y="243"/>
+	<appended-sql><![CDATA[INSERT INTO jogosps3.recommendation ("idAmizade",id_jogosps3) VALUES (1,153);]]></appended-sql>
+	<position x="98" y="244"/>
 	<column name="id_reco" not-null="true">
 		<type name="serial"/>
 	</column>
