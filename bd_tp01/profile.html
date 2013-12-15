@@ -1,0 +1,203 @@
+<?php
+include_once 'conexao.php';
+
+class Profile {
+
+    private $id_profile;
+    private $idUsuario;
+    private $gen;
+    private $map_price;
+    private $gameSex;
+    private $newest;
+    private $describe;
+  
+    function __construct($id_profile,$idUsuario,$gen,$map_price,$gameSex,$newest,$describe) {
+        $this->id_profile = $id_profile;
+        $this->idUsuario = $idUsuario;
+        $this->gen = $gen;
+        $this->map_price = $map_price;
+        $this->gameSex = $gameSex;
+        $this->newest = $newest;
+        $this->describe = $describe;
+        
+
+        $this->banco = new Conexao();
+    }
+
+    
+    public function alterarProfile($id_p,$id_u){
+        $alterarProfile = "UPDATE profile
+			  SET      gen = '$this->gen',
+			           map_price = '$this->map_price',
+			           gameSex = '$this->gameSex',
+			           newest = '$this->newest',
+                 describe = '$this->describe',
+                  
+                WHERE id_profile = '$id_p' AND idUsuario = '$id_u'";
+
+
+	$qry = $this->banco->pg_query($dbcon,$alterarProfile);
+
+    if($qry){
+            echo "Alteracao realizada com sucesso! <br>";
+        }else
+            echo "Falha na alteracao! <br>";
+    }
+
+public function cadastrarProfile(){
+        
+        $incluirProfile = "INSERT INTO jogosps3.profile
+        (id_profile,idUsuario,gen,map_price,gameSex,newest,describe)
+        VALUES ('$this->id_profile','$this->idUsuario','$this->gen','$this->map_price','$this->gameSex','$this->newest','$this->describe')";
+        
+    $qry = $this->banco->pg_query($dbcon,$incluirProfile);
+
+        if($qry){
+            echo "Cadastro realizado com sucesso! <br>";
+        }else
+           echo "Falha no cadastro! <br>";
+    }
+
+public function definirFeatures($gen,$price,$sex,$newest){
+        $buscaFeature = "SELECT * FROM jogosps3.features WHERE features.value = '$gen' or features.value = '$newest' or features.value = '$sex' or features.value = '$price'";
+        $busca = pg_query($dbcon,$buscaFeature);
+
+
+        if($gen == "Selecione um gênero"){
+
+           $linha = pg_fetch_assoc($busca); 
+           $this->gen = $linha["code"];          
+        }
+        if($price == "Selecione um preço"){
+           
+           $linha = pg_fetch_row($busca);  
+           $this->map_price = $linha["code"];
+        }
+        if($sex == "Selecione um sexo"){
+        
+           $linha = pg_fetch_row($busca);  
+           $this->gameSex = $linha["code"];
+        }
+
+        $this->describe = $_POST["describe"];
+        
+}
+/*
+    
+    public function listarTodos(){
+        $selecionarProfiles = "SELECT * FROM jogosps3.profile";
+
+//        $this->banco->setSQL($selecionarPessoas);
+	$qry = $this->banco->query($selecionarProfiles);
+
+        while ($linha = mysql_fetch_assoc($qry))
+	      {
+        
+        }
+
+    }
+
+   public function pesquisarPorGen($gen){
+        $selecionarGen = "SELECT * FROM profile
+                              WHERE gen=jogosps3.gen";
+
+        $this->banco->setSQL($selecionarGen);
+	$qry = $this->banco->query();
+
+        while ($linha = mysql_fetch_assoc($qry))
+	{
+        $this->id_profile = $linha["id_profile"];
+        $this->gen = $linha["gen"];
+       $this->map_price = $linha["map_price"];
+        $this->gameSex = $linha["gameSex"];
+        $this->newest = $linha["newest"];
+        $this->describe = $linha["describe"];
+        
+
+        }
+    }
+
+    public function pesquisarPorPrice($map_price){
+        $selecionarProfiles = "SELECT * FROM jogosps3.profile
+                              WHERE map_price = 'map_price'";
+
+//        $this->banco->setSQL($selecionarPessoas);
+	$qry = $this->banco->query($selecionarProfiles);
+
+        while ($linha = mysql_fetch_assoc($qry))
+	{
+        $this->id_profile = $linha["id_profile"];
+        $this->gen = $linha["gen"];
+	     $this->map_price = $linha["map_price"];
+        $this->gameSex = $linha["gameSex"];
+        $this->newest = $linha["newest"];
+        $this->describe = $linha["describe"];
+       
+        }
+    }
+
+    public function pesquisarPorGameSex($gameSex){
+        $selecionarGameSex = "SELECT * FROM feature
+                              WHERE gameSex = 'gameSex'";
+
+//        $this->banco->setSQL($selecionarPessoas);
+  $qry = $this->banco->query($selecionarGameSex);
+
+        while ($linha = mysql_fetch_assoc($qry))
+  {
+        $this->id_profile = $linha["id_profile"];
+        $this->gen = $linha["gen"];
+       $this->map_price = $linha["map_price"];
+        $this->gameSex = $linha["gameSex"];
+        $this->newest = $linha["newest"];
+        $this->describe = $linha["describe"];
+       
+        }
+    }
+
+    public function pesquisarPorNewest($newest){
+        $selecionarNewest = "SELECT * FROM profile
+                              WHERE newest = 'newest'";
+
+//        $this->banco->setSQL($selecionarPessoas);
+  $qry = $this->banco->query($selecionarNewest);
+
+        while ($linha = mysql_fetch_assoc($qry))
+  {
+        $this->id_profile = $linha["id_profile"];
+        $this->gen = $linha["gen"];
+       $this->map_price = $linha["map_price"];
+        $this->gameSex = $linha["gameSex"];
+        $this->newest = $linha["newest"];
+        $this->describe = $linha["describe"];
+       
+        }
+    }
+
+    public function pesquisarPorDescribe($describe){
+        $selecionarProfiles = "SELECT * FROM profile
+                              WHERE map_price = 'map_price'";
+
+//        $this->banco->setSQL($selecionarPessoas);
+  $qry = $this->banco->query($selecionarProfiles);
+
+        while ($linha = mysql_fetch_assoc($qry))
+  {
+        $this->id_profile = $linha["id_profile"];
+        $this->gen = $linha["gen"];
+       $this->map_price = $linha["map_price"];
+        $this->gameSex = $linha["gameSex"];
+        $this->newest = $linha["newest"];
+        $this->describe = $linha["describe"];
+       
+        }
+    }
+
+
+*/
+
+}
+
+
+
+?>
